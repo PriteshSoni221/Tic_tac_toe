@@ -1,8 +1,8 @@
-#Global Variables
+# Global Variables
 
-board = ["-","-","-",
-         "-","-","-",
-         "-","-","-"]
+board = ["-", "-", "-",
+         "-", "-", "-",
+         "-", "-", "-"]
 
 current_player = "X"
 
@@ -12,32 +12,30 @@ winner = None
 
 
 def play_game():
-
     """The main function to play the game"""
-    #calling global funtions. We need them if player wants to play again.
+    # calling global functions. We need them if player wants to play again.
     global board
     global game_still_going
 
-    #shows initial position of board , all places are blank
+    # shows initial position of board , all places are blank
     display_board()
 
-    #while loop to keep the game contious untill someone wins or game ties.
+    # while loop to keep the game continuous until someone wins or game ties.
     while game_still_going:
-
         handle_turn(current_player)
 
         check_if_game_over()
 
         flip_player()
 
-    #Printing the result
+    # Printing the result
     if winner is not None:
         print(winner + " has won the game!")
     else:
         print("Draw!")
 
-    #Given line of codes are helping user to play again if he wishes
-    play_again = input("Do you want to play again? yes or no?")
+    # Given line of codes are helping user to play again if he wishes
+    play_again = input("Type 'yes' to play again, Type anything else to close the game! : ")
     play_again = play_again.lower().strip()
     if play_again == "yes":
         board = ["-", "-", "-",
@@ -46,8 +44,9 @@ def play_game():
         game_still_going = True
 
         play_game()
+
     else:
-        print("Thanks for playing tic tac tow!")
+        print("Thank you for playing!")
 
     return
 
@@ -64,12 +63,11 @@ def display_board():
 
 def handle_turn(player):
     """Allows user to input the sign i.e. X or O  and show the sign in a new board"""
-
-    print( player ,"'s turn")
+    print(player, "'s turn")
     valid = False
     while not valid:
         position = input("Enter the position number from 1-9:")
-        while position not in ["1","2","3","4","5","6","7","8","9"]:
+        while position not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
             position = input("Enter the position number from 1-9:")
 
         position = int(position) - 1
@@ -78,12 +76,10 @@ def handle_turn(player):
         else:
             print("Position is invalid!")
 
-
     board[position] = player
 
-    #display the board after taking an input from user
+    # display the board after taking an input from user
     display_board()
-    return
 
 
 def flip_player():
@@ -107,35 +103,33 @@ def player_won():
     values in variables. Those returned values are either X or O. Then we will assign either value in winner"""
     global winner
 
-
     row_winner = check_row()
     column_winner = check_column()
-    diagoanl_winner = check_diagonal()
+    diagonal_winner = check_diagonal()
 
     if row_winner:
         winner = row_winner
     elif column_winner:
         winner = column_winner
-    elif diagoanl_winner:
-        winner = diagoanl_winner
-    return
+    elif diagonal_winner:
+        winner = diagonal_winner
 
 
 def check_row():
     """checking all 3 rows for wining conditions"""
-    #calling global variabel to make changes in it
+    # calling global variabel to make changes in it
     global game_still_going
 
-    #checking the values of Row 1,2 & 3. exluding "-" to get rid of unexcepted sitaution in the beginning
-    row_1 = board[0] == board [1] == board[2] != "-"
+    # checking the values of Row 1,2 & 3. excluding "-" to get rid of unexpected situation in the beginning
+    row_1 = board[0] == board[1] == board[2] != "-"
     row_2 = board[3] == board[4] == board[5] != "-"
     row_3 = board[6] == board[7] == board[8] != "-"
 
-    #If rows have equal sign, we need to stop the game immediately
+    # If rows have equal sign, we need to stop the game immediately
     if row_1 or row_2 or row_3:
         game_still_going = False
 
-    #we are returning the winner player's sign.
+    # we are returning the winner player's sign.
     if row_1:
         return board[0]
     elif row_2:
@@ -165,7 +159,6 @@ def check_column():
         return board[2]
     else:
         return None
-    return
 
 
 def check_diagonal():
@@ -174,7 +167,6 @@ def check_diagonal():
 
     diagonal_1 = board[0] == board[4] == board[8] != "-"
     diagonal_2 = board[2] == board[4] == board[6] != "-"
-
 
     if diagonal_1 or diagonal_2:
         game_still_going = False
@@ -185,14 +177,12 @@ def check_diagonal():
         return board[2]
     else:
         return None
-    return
 
 
 def game_tie():
     global game_still_going
     if "-" not in board:
         game_still_going = False
-    return
 
 
 play_game()
