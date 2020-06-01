@@ -1,3 +1,5 @@
+import tkinter as tk
+
 # Global Variables
 
 board = ["-", "-", "-",
@@ -185,4 +187,40 @@ def game_tie():
         game_still_going = False
 
 
-play_game()
+# From here I will define the GUI code
+root = tk.Tk()
+root.title("Tic Tac Toe")
+min_width, min_height = 750, 700
+root.minsize(min_width, min_height)
+# given line of code will make our whole window transparent.
+# root.wm_attributes("-alpha", 0.99)
+background_image = tk.PhotoImage(file="game.png")
+background_label = tk.Label(root, image=background_image)
+background_label.place(x=0, y=0)
+
+notice_label = tk.Label(root, text="Important info will appear here.", font=("times new roman", 20))
+notice_label.place(relx=0.2, rely=0.1, relwidth=0.6, relheight=0.1)
+
+# These are buttons with 0.19*0.19 size so that there is a thin line between them, make it look pretty.
+button1 = tk.Button(root, bg="#4287f5")
+button1.place(relx=0.2, rely=0.3, relwidth=0.19, relheight=0.19)
+button2 = tk.Button(root, bg="#4287f5")
+button2.place(relx=0.4, rely=0.3, relwidth=0.19, relheight=0.19)
+button3 = tk.Button(root, bg="#4287f5")
+button3.place(relx=0.6, rely=0.3, relwidth=0.19, relheight=0.19)
+button4 = tk.Button(root, bg="#4287f5")
+button4.place(relx=0.2, rely=0.5, relwidth=0.19, relheight=0.19)
+button5 = tk.Button(root, bg="#4287f5")
+button5.place(relx=0.4, rely=0.5, relwidth=0.19, relheight=0.19)
+button6 = tk.Button(root, bg="#4287f5")
+button6.place(relx=0.6, rely=0.5, relwidth=0.19, relheight=0.19)
+button7 = tk.Button(root, bg="#4287f5")
+button7.place(relx=0.2, rely=0.7, relwidth=0.19, relheight=0.19)
+button8 = tk.Button(root, bg="#4287f5")
+button8.place(relx=0.4, rely=0.7, relwidth=0.19, relheight=0.19)
+button9 = tk.Button(root, bg="#4287f5")
+button9.place(relx=0.6, rely=0.7, relwidth=0.19, relheight=0.19)
+
+root.mainloop()
+
+# play_game()
