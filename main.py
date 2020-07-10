@@ -7,7 +7,7 @@ turn_of_X = True
 
 
 def play(buttons):
-    """Player will click on valid button and sign will appear on the button."""
+    """Player will click on valid button and the mark will appear on the button."""
     global turn_of_X, num_of_turns
     if buttons["text"] == " " and turn_of_X == True:
         buttons["text"] = "X"
@@ -36,7 +36,7 @@ def check_if_game_over():
             button3['text'] == 'X' and button6['text'] == 'X' and button9['text'] == 'X'):
         quit_application("X")
 
-    elif num_of_turns == 9:
+    elif num_of_turns == 8:
         quit_application("")
 
     elif (button1['text'] == 'O' and button2['text'] == 'O' and button3['text'] == 'O' or
@@ -64,18 +64,34 @@ def clear_button():
     button9["text"] = " "
 
 
+def disableButton():
+    button1.configure(state=DISABLED)
+    button2.configure(state=DISABLED)
+    button3.configure(state=DISABLED)
+    button4.configure(state=DISABLED)
+    button5.configure(state=DISABLED)
+    button6.configure(state=DISABLED)
+    button7.configure(state=DISABLED)
+    button8.configure(state=DISABLED)
+    button9.configure(state=DISABLED)
+
+
 def restart_game():
     global num_of_turns
+    global turn_of_X
     """To restart the game we just need to clear sign from buttons and set number of turns to zero."""
     num_of_turns = 0
+    turn_of_X = True
     clear_button()
+    disableButton()
 
 
 def quit_application(winner):
     """Ask user to restart or quit the game."""
     if winner == "X" or winner == "O":
         message_box = tk.messagebox.askquestion("Tic Tac Toe", "{} has won the game.\n"
-                                                               "Do want to quit the application".format(winner),
+                                                               "Do want to quit the application".format(
+                                                                   winner),
                                                 icon='warning')
     else:
         message_box = tk.messagebox.askquestion("Tic Tac Toe", "It is a Draw!\nDo you want to quit the application",
@@ -94,14 +110,15 @@ min_width, min_height = 750, 700
 root.minsize(min_width, min_height)
 # given line of code will make our whole window transparent. I have commented it because it was not very pleasing to see
 # root.wm_attributes("-alpha", 0.75)
-background_image = tk.PhotoImage(file="game.png")
+background_image = tk.PhotoImage(file="/game.png")
 background_label = tk.Label(root, image=background_image)
-background_label.place(x=0, y=0)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-notice_label = tk.Label(root, text="Welcome to a tic tac toe game \n \t by Pritesh Soni.", font=("times new roman", 20))
+notice_label = tk.Label(
+    root, text="Welcome to a tic tac toe game \n \t by Pritesh Soni.", font=("times new roman", 20))
 notice_label.place(relx=0.2, rely=0.1, relwidth=0.6, relheight=0.1)
 
-# These are buttons with 0.19*0.19 size so that there is a thin line between them, makes it look pretty.
+# These are buttons with 0.19*0.19 relsize so that there is a thin line between them, makes it look pretty.
 button1 = tk.Button(root, text=" ", command=lambda: play(button1), font=("times new roman", 22))
 button1.place(relx=0.2, rely=0.3, relwidth=0.19, relheight=0.19)
 button2 = tk.Button(root, text=" ", command=lambda: play(button2), font=("times new roman", 22))
@@ -120,5 +137,9 @@ button8 = tk.Button(root, text=" ", command=lambda: play(button8), font=("times 
 button8.place(relx=0.4, rely=0.7, relwidth=0.19, relheight=0.19)
 button9 = tk.Button(root, text=" ", command=lambda: play(button9), font=("times new roman", 22))
 button9.place(relx=0.6, rely=0.7, relwidth=0.19, relheight=0.19)
+
+clear_screen = tk.Button(root, text="Clear Screen", font=(
+    "times new roman", 22), command=restart_game)
+clear_screen.place(relx=0.38, rely=0.21, relwidth=0.24, relheight=0.08)
 
 root.mainloop()
