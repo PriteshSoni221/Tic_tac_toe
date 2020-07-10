@@ -110,7 +110,7 @@ min_width, min_height = 750, 700
 root.minsize(min_width, min_height)
 # given line of code will make our whole window transparent. I have commented it because it was not very pleasing to see
 # root.wm_attributes("-alpha", 0.75)
-background_image = tk.PhotoImage(file="/game.png")
+background_image = tk.PhotoImage(file="game.png")
 background_label = tk.Label(root, image=background_image)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
