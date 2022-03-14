@@ -110,7 +110,9 @@ min_width, min_height = 750, 700
 root.minsize(min_width, min_height)
 # given line of code will make our whole window transparent. I have commented it because it was not very pleasing to see
 # root.wm_attributes("-alpha", 0.75)
+
 background_image = tk.PhotoImage(file="./game.png")
+
 background_label = tk.Label(root, image=background_image)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -119,6 +121,7 @@ notice_label = tk.Label(
 notice_label.place(relx=0.2, rely=0.1, relwidth=0.6, relheight=0.1)
 
 # These are buttons with 0.19*0.19 relsize so that there is a thin line between them, makes it look pretty.
+
 button1 = tk.Button(root, text=" ", command=lambda: play(
     button1), font=("times new roman", 22))
 button1.place(relx=0.2, rely=0.3, relwidth=0.19, relheight=0.19)
@@ -145,6 +148,34 @@ button8 = tk.Button(root, text=" ", command=lambda: play(
 button8.place(relx=0.4, rely=0.7, relwidth=0.19, relheight=0.19)
 button9 = tk.Button(root, text=" ", command=lambda: play(
     button9), font=("times new roman", 22))
+
+button1 = tk.Button(root, text=" ", command=lambda: play(
+    button1), font=("times new roman", 22))
+button1.place(relx=0.2, rely=0.3, relwidth=0.19, relheight=0.19)
+button2 = tk.Button(root, text=" ", command=lambda: play(
+    button2), font=("times new roman", 22))
+button2.place(relx=0.4, rely=0.3, relwidth=0.19, relheight=0.19)
+button3 = tk.Button(root, text=" ", command=lambda: play(
+    button3), font=("times new roman", 22))
+button3.place(relx=0.6, rely=0.3, relwidth=0.19, relheight=0.19)
+button4 = tk.Button(root, text=" ", command=lambda: play(
+    button4), font=("times new roman", 22))
+button4.place(relx=0.2, rely=0.5, relwidth=0.19, relheight=0.19)
+button5 = tk.Button(root, text=" ", command=lambda: play(
+    button5), font=("times new roman", 22))
+button5.place(relx=0.4, rely=0.5, relwidth=0.19, relheight=0.19)
+button6 = tk.Button(root, text=" ", command=lambda: play(
+    button6), font=("times new roman", 22))
+button6.place(relx=0.6, rely=0.5, relwidth=0.19, relheight=0.19)
+button7 = tk.Button(root, text=" ", command=lambda: play(
+    button7), font=("times new roman", 22))
+button7.place(relx=0.2, rely=0.7, relwidth=0.19, relheight=0.19)
+button8 = tk.Button(root, text=" ", command=lambda: play(
+    button8), font=("times new roman", 22))
+button8.place(relx=0.4, rely=0.7, relwidth=0.19, relheight=0.19)
+button9 = tk.Button(root, text=" ", command=lambda: play(
+    button9), font=("times new roman", 22))
+
 button9.place(relx=0.6, rely=0.7, relwidth=0.19, relheight=0.19)
 
 clear_screen = tk.Button(root, text="Clear Screen", font=(
